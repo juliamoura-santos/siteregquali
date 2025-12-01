@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regstro de Qualidade</title>
+    <link rel="stylesheet" href="estilo-registro-qualidade.css">
+      <link rel="stylesheet" href="rodape.css">
+</head>
+<body>
+    <form id="form">
+    <div class="login">
+        <div class="caixa">
+            <h1>Funções de Identificação e Rastreabilidade</h1>
+
+            <!-- Primeira fileira lado a lado -->
+            <div class="colunas">
+                <div class="login-grupo">
+                    <label for="titulo">Título do Registro:</label>
+                    <input type="text" name="titulo" id="titulo" required>
+                </div>
+
+                <div class="login-grupo">
+                    <label for="documento">Número do Documento/Código:</label>
+                    <input type="text" name="documento" id="documento" required>
+                </div>
+            </div>
+
+            <!-- Segunda fileira lado a lado -->
+            <div class="colunas">
+                <div class="login-grupo">
+                    <label for="data">Data e Hora:</label>
+                    <input type="text" name="data" id="data" required>
+                </div>
+
+                <div class="login-grupo">
+                    <label for="op">Lote/Ordem de Produção (O.P.):</label>
+                    <input type="text" name="op" id="op" required>
+                </div>
+            </div>
+
+            <!-- Terceira fileira lado a lado -->
+            <div class="colunas">
+                <div class="login-grupo">
+                    <label for="peca">Número da Peça/Componente:</label>
+                    <input type="text" name="peca" id="peca" required>
+                </div>
+
+                <div class="login-grupo">
+                    <label for="forn">Fornecedor/Cliente:</label>
+                    <input type="text" name="forn" id="forn" required>
+                </div>
+            </div>
+
+            <!-- Campo sozinho embaixo -->
+            <div class="login-grupo">
+                <label for="desenho">Referência do Desenho/Especificação:</label>
+                <input type="text" name="desenho" id="desenho" required>
+            </div>
+
+            <button type="submit" class="login-botao">Enviar</button>
+        </div>
+    </div>
+</form>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>  
+<script>
+    //Comunicação com o firebase e o JS
+    const firebaseConfig = {
+        apiKey: "AIzaSyAtZ_hiat_KuJ7kQeUQ97EMavS5tETiZnE",
+        authDomain: "banco-dados-reg-quali.firebaseapp.com",
+        databaseURL: "https://banco-dados-reg-quali-default-rtdb.firebaseio.com",
+        projectId: "banco-dados-reg-quali",
+        storageBucket: "banco-dados-reg-quali.firebasestorage.app",
+        messagingSenderId: "61826368942",
+        appId: "1:61826368942:web:23c29e8ff89189881ef43f"
+};
+//Inicializando o Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+
+//Envia dados ao Realtime Database
+document.getElementById('form').addEventListener('submit',function(e) {
+    e.preventDefault(); //Impede a reinicialização automatica do formulário
+    //Guarda o valor de nome e e-mail do HTML nas variaveis JS
+    const titulo = document.getElementById('titulo').value;
+    const documento = document.getElementById('documento').value;
+    const data = document.getElementById('data').value;
+    const op = document.getElementById('op').value;
+    const peca = document.getElementById('peca').value;
+    const forn = document.getElementById('forn').value;
+    const desenho = document.getElementById('desenho').value;
+
+    //Avisa o firebase que os dados serão guardados dentro dele
+    database.ref('Relatório').push({
+        titulo:titulo,
+        documento:documento,
+        data:data,
+        op:op,
+        peca:peca,
+        forn:forn,
+        desenho:desenho
+    })
+    .then(() => {
+        document.getElementById('mensagem').innerText = 'Dados enviados com sucesso!';
+        this.reset(); //Reinicia o formulário
+    })
+    .catch(error => {
+        document.getElementById('mensagem').innerText = 'Erro:' +error.message;
+    });
+});
+</script>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>RegQuali</h3>
+            <p><strong>Endereço:</strong><br>Rua Guatemala 19</p>
+            <p><strong>WhatsApp Vendas:</strong><br>(055) 113047-7300</p>
+            <p><strong>WhatsApp Suporte:</strong><br>(055) 113047-7322</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Nossas soluções</h4>
+            <a href="#">Gestão de Documentos</a>
+            <a href="#">Gestão de Não Conformidades</a>
+            <a href="#">Gestão de Oportunidades</a>
+            <a href="#">Gestão de Auditorias</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Indústrias</h4>
+            <a href="#">Indústria Geral</a>
+            <a href="#">Logística</a>
+            <a href="#">Engenharia e Construção Civil</a>
+            <a href="#">Demais Setores</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Sobre nós</h4>
+            <a href="#">Cases de Sucesso</a>
+            <a href="#">Quem Somos</a>
+            <a href="#">Contato</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Conteúdos</h4>
+            <a href="#">Materiais Gratuitos</a>
+            <a href="#">Webinars e Eventos</a>
+            <a href="#">Podcast Qualytalks</a>
+            <a href="#">RegQuali Explica</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 RegQuali — Todos os direitos reservados
+    </div>
+</footer>
+
+
+
+</body>
+</html>

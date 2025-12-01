@@ -1,0 +1,80 @@
+/* =================================
+   Estilos do Cabeçalho (Fixo no Topo)
+   ================================= */
+
+/* Define a altura do cabeçalho como variável */
+:root {
+    --altura-cabecalho: 70px; 
+}
+
+/* Container principal do cabeçalho (display flex para alinhamento) */
+.cabecalho {
+    background-color: #333; /* Fundo escuro */
+    color: white;
+    padding: 10px 20px;
+    border-bottom: 3px solid #007bff; /* Linha de destaque */
+    
+    /* 🔑 Alinhamento */
+    display: flex; 
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center; /* Centraliza verticalmente */
+    
+    /* 🔑 Fixar no Topo */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    height: var(--altura-cabecalho);
+}
+
+.cabecalho .logo-area h1 {
+    margin: 0;
+    font-size: 1.5em;
+    border-bottom: 2px solid white; /* Linha de destaque sob o título */
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Estilos da Navegação */
+.menu-principal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    gap: 15px; 
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.menu-principal a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* 🔑 AJUSTE CRÍTICO: Move o conteúdo do BODY para baixo do cabeçalho fixo */
+body {
+    padding-top: var(--altura-cabecalho);
+    /* Remove a centralização vertical que existia no BODY antes, pois o cabeçalho está fixo */
+    height: auto !important; /* Permite que o conteúdo role */
+    display: block !important; /* Desabilita o flexbox de centralização total */
+    justify-content: initial !important; 
+    align-items: initial !important;
+}
+
+/* Garante que os containers de login/caixa ainda fiquem centralizados horizontalmente */
+.login {
+    margin: 20px auto; /* Adiciona margem superior e inferior, e centraliza horizontalmente */
+    /* Remove display: flex e height: 100vh se estavam no .login para não entrar em conflito com o body */
+    display: block; 
+}
+
+.caixa {
+    /* Mantém as propriedades de largura e aparência */
+    margin: 0 auto; /* Centraliza a caixa dentro do .login */
+}

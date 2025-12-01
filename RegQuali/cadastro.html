@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="estilo-cadastro.css">
+</head>
+
+<body>
+    <form>
+    <div class="login">
+        <div class="caixa">
+            <h1>Cadastrar</h1>
+            <p>Preencha o formulario para se cadastrar:</p>
+
+                <div class="login-grupo">
+                    <label for="Inome">Nome:</label>
+                    <input type="text" name="nome" id="Inome" required>
+                </div>
+
+                <div class="login-grupo">
+                    <label for="Icpf">CPF:</label>
+                    <input type="text" name="cpf" id="Icpf" required>
+                </div>
+
+                <div class="login-grupo">
+                <label>Qual o setor de atuação?</label>
+                <select>
+                    <option>Inspetor de Qualiade</option>
+                    <option>Técnicos e Engenheiros</option>
+                    <option>Auditores Interos e Externos</option>
+                    <option>Gestores de Produção</option>
+                </select>
+                </div>
+
+                <div class="login-grupo">
+                    <label for="Iemail">Email:</label>
+                    <input type="email" name="email" id="Iemail" required>
+                </div>
+                <div class="login-grupo">
+                    <label for="Isenha">Senha:</label>
+                    <input type="password" name="senha" id="Isenha" required>
+                </div>
+                <div>
+                    <p>Já tem cadastro? <a href="entrar.html">Clique Aqui</a></p>
+                </div>
+                <button type="submit" class="login-botao">Entrar</button>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

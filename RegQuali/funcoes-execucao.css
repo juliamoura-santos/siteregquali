@@ -1,0 +1,209 @@
+/* =================================
+   Estilos Gerais e Corpo da Página
+   ================================= */
+body {
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #f6f6f6;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* =================================
+   Estrutura do Formulário
+   ================================= */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.caixa {
+    text-align: center;
+    background-color: #566a83;
+    padding: 30px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(146, 146, 146, 0.822);
+    width: 100%;
+    max-width: 700000px; 
+}
+
+.login-grupo {
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 15px 15px;
+    border: 1px solid #1a1a1c;
+    border-radius: 10px;
+    background-color: #1a1a1c;
+    color: #b0b0b0;
+    font-weight: bold;
+}
+
+.login-grupo label {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 3px;
+    font-size: 16px;
+    color: white;
+}
+
+.login-grupo input,
+.login-grupo select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 17px 14px;
+    border: 2px solid #7baec5;
+    border-radius: 5px;
+    background-color: #1a1a1c;
+    color: #FFFFFF;
+}
+
+/* Layout em colunas para a página de cadastro */
+.colunas {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.colunas .login-grupo {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* =================================
+   Botões e Links
+   ================================= */
+.login-botao {
+    width: 100%;
+    max-width: 150px;
+    padding: 10px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 7px;
+    background-color: #9dcbff;
+    color: #FFFFFF;
+}
+
+.login-botao:hover {
+    background-color: #1a3e57;
+    text-decoration: none;
+}
+
+a {
+    color: #2e519b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =================================
+   Tipografia
+   ================================= */
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
+
+p {
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+/* =================================
+   Estilos do Cabeçalho (Fixo no Topo)
+   ================================= */
+
+/* Define a altura do cabeçalho como variável */
+:root {
+    --altura-cabecalho: 70px; 
+}
+
+/* Container principal do cabeçalho (display flex para alinhamento) */
+.cabecalho {
+    background-color: #333; /* Fundo escuro */
+    color: white;
+    padding: 10px 20px;
+    border-bottom: 3px solid #007bff; /* Linha de destaque */
+    
+    /* 🔑 Alinhamento */
+    display: flex; 
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center; /* Centraliza verticalmente */
+    
+    /* 🔑 Fixar no Topo */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    height: var(--altura-cabecalho);
+}
+
+.cabecalho .logo-area h1 {
+    margin: 0;
+    font-size: 1.5em;
+    border-bottom: 2px solid white; /* Linha de destaque sob o título */
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Estilos da Navegação */
+.menu-principal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    gap: 15px; 
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.menu-principal a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* 🔑 AJUSTE CRÍTICO: Move o conteúdo do BODY para baixo do cabeçalho fixo */
+body {
+    padding-top: var(--altura-cabecalho);
+    /* Remove a centralização vertical que existia no BODY antes, pois o cabeçalho está fixo */
+    height: auto !important; /* Permite que o conteúdo role */
+    display: block !important; /* Desabilita o flexbox de centralização total */
+    justify-content: initial !important; 
+    align-items: initial !important;
+}
+
+/* Garante que os containers de login/caixa ainda fiquem centralizados horizontalmente */
+.login {
+    margin: 20px auto; /* Adiciona margem superior e inferior, e centraliza horizontalmente */
+    /* Remove display: flex e height: 100vh se estavam no .login para não entrar em conflito com o body */
+    display: block; 
+}
+
+.caixa {
+    /* Mantém as propriedades de largura e aparência */
+    margin: 0 auto; /* Centraliza a caixa dentro do .login */
+}

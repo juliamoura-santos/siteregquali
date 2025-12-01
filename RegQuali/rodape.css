@@ -1,0 +1,65 @@
+/* ----- RODAPÉ ----- */
+.footer {
+    background: #0d0d0d;
+    color: #f6f6f6;
+    padding: 40px 0 20px;
+    margin-top: 40px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    width: 200px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    color: #d1d1d1;
+    display: block;
+    margin: 5px 0;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.footer-col a:hover {
+    color: #C4E1E6; /* azul claro do seu tema */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #bfbfbf;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-col {
+        width: 100%;
+    }
+}
